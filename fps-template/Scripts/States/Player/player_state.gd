@@ -33,12 +33,15 @@ func handle_input(event: InputEvent) -> void:
 
 
 func crouch_inputs():
+	if player.exiting_crouching and !player.crouch_shape_cast.is_colliding():
+		player.exit_crouch()
 	if Input.is_action_just_pressed("crouch") && player.is_on_floor():
 		player.enter_crouch_ground()
 	if Input.is_action_just_pressed("crouch") && !player.is_crouching:
 		player.enter_crouch_air()
 	if Input.is_action_just_released("crouch"):
-		player.exit_crouch()
+		player.exiting_crouching = true
+
 
 
 func ui_inputs():

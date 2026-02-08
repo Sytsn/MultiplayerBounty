@@ -7,9 +7,11 @@ class_name Player extends CharacterBody3D
 @export var collider: CollisionShape3D
 @export var mesh: MeshInstance3D
 @export var is_multiplayer: bool = true
+@export var crouch_shape_cast: ShapeCast3D
 
 var is_paused = false
 var is_crouching = false
+var exiting_crouching = false
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
@@ -75,19 +77,20 @@ func stop_player(delta: float):
 func enter_crouch_ground():
 	is_crouching = true
 	collider.scale.y = collider.scale.y / 2
-	neck.position.y = neck.position.y / 2
+	neck.position.y -=  .6
 	velocity.y += -50.0
 	move_and_slide()
 
 
 func  enter_crouch_air():
 	collider.scale.y = collider.scale.y / 2
-	neck.position.y = neck.position.y / 2
+	neck.position.y -=  .6
 
 func exit_crouch():
 	is_crouching = false
 	collider.scale.y = collider.scale.y * 2
-	neck.position.y = neck.position.y * 2
+	neck.position.y += .6
+	exiting_crouching = false
 
 
 #endregion

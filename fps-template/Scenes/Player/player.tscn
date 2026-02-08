@@ -20,7 +20,10 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D" unique_id=1139482985 node_paths=PackedStringArray("neck", "camera", "collider", "mesh")]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gk6dx"]
+height = 1.0
+
+[node name="Player" type="CharacterBody3D" unique_id=1139482985 node_paths=PackedStringArray("neck", "camera", "collider", "mesh", "crouch_shape_cast")]
 script = ExtResource("1_qk52v")
 player_res = ExtResource("2_0u5uq")
 neck = NodePath("Neck")
@@ -28,8 +31,10 @@ camera = NodePath("Neck/Camera3D")
 collider = NodePath("CollisionShape3D")
 mesh = NodePath("CollisionShape3D/MeshInstance3D")
 is_multiplayer = false
+crouch_shape_cast = NodePath("ShapeCast3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=884792193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("ConvexPolygonShape3D_pj3iw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1180003104]
@@ -65,3 +70,10 @@ replication_config = SubResource("SceneReplicationConfig_dd0ac")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck" unique_id=58166968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1528224476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_gk6dx")
+target_position = Vector3(0, 1.5, 0)
+debug_shape_custom_color = Color(0.7194535, 2.5509298e-06, 5.7756904e-07, 1)
