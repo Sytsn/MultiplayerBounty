@@ -24,8 +24,6 @@ func _ready() -> void:
 
 func move_player(delta: float, input_dir: Vector2, speed: float):
 	var wish_dir = neck.basis * Vector3(input_dir.x, 0.0, input_dir.y)
-	#air straifing stuff kinda magic
-	#gets the dot product of the players current direction the wish direction
 	var cur_speed_in_wish_dir = velocity.dot(wish_dir)
 	var add_speed_till_cap = speed - cur_speed_in_wish_dir
 
@@ -48,16 +46,33 @@ func air_move_player(delta: float, input_dir: Vector2):
 	velocity.y += player_res.gravity * delta
 	var wish_dir = neck.basis * Vector3(input_dir.x, 0.0, input_dir.y)
 	
-	#air straifing stuff kinda magic
-	#gets the dot product of the players current direction the wish direction
 	var cur_speed_in_wish_dir = velocity.dot(wish_dir)
 	var capped_speed = min((player_res.air_move_speed * wish_dir).length(), player_res.air_cap)
-	#applies speed to player
 	var add_speed_till_cap = capped_speed - cur_speed_in_wish_dir
 	if add_speed_till_cap > 0:
 		var accel_speed = player_res.air_accel * player_res.air_move_speed * delta
 		accel_speed = min(accel_speed, add_speed_till_cap)
 		velocity += accel_speed * wish_dir
+	
+	move_and_slide()
+
+
+func slide_player(delta: float, input_dir: Vector2, speed: float):
+	var wish_dir = neck.basis * Vector3(input_dir.x, 0.0, input_dir.y)
+	var cur_speed_in_wish_dir = velocity.dot(wish_dir)
+	var add_speed_till_cap = speed - cur_speed_in_wish_dir
+
+	if add_speed_till_cap > 0:
+		var accel_speed = player_res.slide_accel * delta * speed
+		accel_speed = min(accel_speed, add_speed_till_cap)
+		velocity += accel_speed * wish_dir
+
+	var control = max(velocity.length(), player_res.slide_decel)
+	var drop = control * player_res.slide_friction * delta
+	var new_speed = max(velocity.length() - drop, 0.0)
+	if velocity.length() > 0:
+		new_speed /= velocity.length()
+	velocity *= new_speed
 	
 	move_and_slide()
 

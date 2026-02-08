@@ -19,6 +19,9 @@ class_name PlayerRes extends Resource
 @export var ground_accel: float = 14.0
 @export var ground_decel: float = 10.0
 @export var ground_friction: float = 6.0
+@export var slide_accel: float = 1.0
+@export var slide_decel: float = 10.0
+@export var slide_friction: float = 1.0
 
 @export_category("Mouse")
 @export var mouse_sens: float = 0.001
