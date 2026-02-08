@@ -1,12 +1,24 @@
 class_name PlayerRes extends Resource
 
-@export_category("Movement Variables")
+@export_category("Movement")
 @export var move_speed: float = 7.0
 @export var air_speed: float = 3.0
 @export var sprint_speed: float = 10.0
 @export var crouch_speed: float = 4.0
 @export var gravity: float = -20.0
-@export var jump_impulse: float = 10.0
+@export var jump_impulse: float = 6.0
+@export var auto_bhop: bool = true
+@export var toggle_sprint: bool
 
-@export_category("Mouse Variables")
+@export_category("Air Movement")
+@export var air_cap: float = 0.85
+@export var air_accel: float = 800.0
+@export var air_move_speed: float = 500.0
+
+@export_category("Ground Movement")
+@export var ground_accel: float = 14.0
+@export var ground_decel: float = 10.0
+@export var ground_friction: float = 6.0
+
+@export_category("Mouse")
 @export var mouse_sens: float = 0.001
