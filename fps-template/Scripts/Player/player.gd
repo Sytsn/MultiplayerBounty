@@ -19,11 +19,11 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-func move_player(input_dir: Vector2):
+func move_player(input_dir: Vector2, speed: float):
 	var direction := (neck.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * (player_res.move_speed if !is_crouching else player_res.crouch_speed)
-		velocity.z = direction.z * (player_res.move_speed if !is_crouching else player_res.crouch_speed)
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, player_res.move_speed)
 		velocity.z = move_toward(velocity.z, 0, player_res.move_speed)

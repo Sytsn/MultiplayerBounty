@@ -1,8 +1,10 @@
 class_name PlayerRes extends Resource
 
 @export_category("Movement Variables")
-@export var move_speed: float = 10.0
-@export var crouch_speed: float = 7.0
+@export var move_speed: float = 7.0
+@export var air_speed: float = 3.0
+@export var sprint_speed: float = 10.0
+@export var crouch_speed: float = 4.0
 @export var gravity: float = -20.0
 @export var jump_impulse: float = 10.0
 
