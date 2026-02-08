@@ -6,7 +6,7 @@ class_name PlayerRes extends Resource
 @export var sprint_speed: float = 10.0
 @export var crouch_speed: float = 4.0
 @export var gravity: float = -20.0
-@export var jump_impulse: float = 6.0
+@export var jump_impulse: float = 7.0
 @export var auto_bhop: bool = true
 @export var toggle_sprint: bool
 
