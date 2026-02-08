@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://n1bmpmajeq05"]
 
 [ext_resource type="Script" uid="uid://bmkf77va2rnnq" path="res://Scripts/Player/player.gd" id="1_qk52v"]
+[ext_resource type="Resource" uid="uid://g31nmw7wil4" path="res://Resources/Scenes/player_res.tres" id="2_0u5uq"]
 [ext_resource type="Script" uid="uid://qxxp28vujgu" path="res://Scripts/StateMachine/state_machine.gd" id="2_eiqen"]
-[ext_resource type="Script" uid="uid://bd1o3e1mpvsf" path="res://Scripts/States/running.gd" id="3_aep1g"]
-[ext_resource type="Script" uid="uid://d8j3cnaa1equ" path="res://Scripts/States/idle.gd" id="4_kngvf"]
-[ext_resource type="Script" uid="uid://cxa1udd8bx2cy" path="res://Scripts/States/falling.gd" id="5_hfx5k"]
-[ext_resource type="Script" uid="uid://cjnvsygxiw5ii" path="res://Scripts/States/jumping.gd" id="6_duo2v"]
+[ext_resource type="Script" uid="uid://bd1o3e1mpvsf" path="res://Scripts/States/Player/running.gd" id="3_aep1g"]
+[ext_resource type="Script" uid="uid://d8j3cnaa1equ" path="res://Scripts/States/Player/idle.gd" id="4_kngvf"]
+[ext_resource type="Script" uid="uid://cxa1udd8bx2cy" path="res://Scripts/States/Player/falling.gd" id="5_hfx5k"]
+[ext_resource type="Script" uid="uid://cjnvsygxiw5ii" path="res://Scripts/States/Player/jumping.gd" id="6_duo2v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_niqct"]
 
@@ -19,8 +20,10 @@ properties/0/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=1139482985 node_paths=PackedStringArray("neck", "camera")]
 script = ExtResource("1_qk52v")
+player_res = ExtResource("2_0u5uq")
 neck = NodePath("Neck")
 camera = NodePath("Neck/Camera3D")
+is_multiplayer = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1180003104]
 mesh = SubResource("CapsuleMesh_niqct")
@@ -48,5 +51,6 @@ script = ExtResource("6_duo2v")
 replication_config = SubResource("SceneReplicationConfig_dd0ac")
 
 [node name="Neck" type="Node3D" parent="." unique_id=1849357523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck" unique_id=58166968]
