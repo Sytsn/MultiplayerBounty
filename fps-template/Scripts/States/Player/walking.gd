@@ -1,7 +1,7 @@
 extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
-	#player.animation_player.play("run")
+	print("walk")
 	pass
 
 
@@ -13,7 +13,7 @@ func physics_update(delta: float) -> void:
 	
 	if not player.is_on_floor():
 		finished.emit(FALLING)
-	elif Input.is_action_pressed("move_forward") and Input.is_action_pressed("sprint"):
+	elif Input.is_action_pressed("move_forward") and Input.is_action_pressed("sprint") and !player.is_crouching:
 		finished.emit(SPRINTING)
 	elif Input.is_action_just_pressed("jump") or (player.player_res.auto_bhop and Input.is_action_pressed("jump")):
 		finished.emit(JUMPING)

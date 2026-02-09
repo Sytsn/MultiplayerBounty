@@ -22,6 +22,7 @@ class_name PlayerRes extends Resource
 @export var slide_accel: float = 1.0
 @export var slide_decel: float = 10.0
 @export var slide_friction: float = 1.0
+@export var slide_threshold: float = 20.0
 
 @export_category("Mouse")
 @export var mouse_sens: float = 0.001
