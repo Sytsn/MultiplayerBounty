@@ -31,7 +31,6 @@ neck = NodePath("Neck")
 camera = NodePath("Neck/Camera3D")
 collider = NodePath("CollisionShape3D")
 mesh = NodePath("CollisionShape3D/MeshInstance3D")
-is_multiplayer = false
 crouch_shape_cast = NodePath("ShapeCast3D")
 
 [node name="PlayerUI" parent="." unique_id=2081950460 node_paths=PackedStringArray("player") instance=ExtResource("9_gk6dx")]

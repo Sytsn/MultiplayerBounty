@@ -53,9 +53,6 @@ script = ExtResource("3_mh7mo")
 network_player = ExtResource("2_mh7mo")
 
 [node name="NetworkUi" parent="." unique_id=828660242 instance=ExtResource("4_fvyv6")]
-visible = false
-
-[node name="Player" parent="NetworkUi" unique_id=1139482985 instance=ExtResource("2_mh7mo")]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1933784035]
 use_collision = true

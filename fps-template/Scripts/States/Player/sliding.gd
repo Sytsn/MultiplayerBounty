@@ -13,7 +13,6 @@ func physics_update(delta: float) -> void:
 	if rad_to_deg(floor_angle) > player.player_res.slide_threshold:
 		slide_dir = Vector2(input_dir.x, -1 * floor_angle)
 	player.slide_player(delta, slide_dir, player.player_res.sprint_speed)
-	print(input_dir)
 	
 	if not player.is_on_floor():
 		finished.emit(FALLING)

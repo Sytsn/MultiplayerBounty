@@ -8,16 +8,25 @@ class_name Player extends CharacterBody3D
 @export var mesh: MeshInstance3D
 @export var is_multiplayer: bool = true
 @export var crouch_shape_cast: ShapeCast3D
+@export var health_res: HealthRes
 
+var health: Health
 var is_paused = false
 var is_crouching = false
 var exiting_crouching = false
+var is_dead = false
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func health_setup():
+	health = Health.new(health_res.max_health, health_res.min_health, health_res.heal_rate, health_res.heal_rate)
+	health.dead.connect(_on_death)
 
 
 #region Player Movement
@@ -109,3 +118,7 @@ func exit_crouch():
 
 
 #endregion
+
+
+func _on_death():
+	is_dead = true
