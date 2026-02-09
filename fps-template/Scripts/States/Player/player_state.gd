@@ -22,6 +22,8 @@ func update(delta: float) -> void:
 
 
 func handle_input(event: InputEvent) -> void:
+	if !player.is_multiplayer_authority() && player.is_multiplayer: return
+
 	if event is InputEventMouseMotion:
 		player.neck.rotate_y(-event.relative.x * player.player_res.mouse_sens)
 		player.camera.rotate_x(-event.relative.y * player.player_res.mouse_sens)
@@ -34,6 +36,8 @@ func handle_input(event: InputEvent) -> void:
 
 
 func crouch_inputs():
+	if !player.is_multiplayer_authority() && player.is_multiplayer: return
+
 	if player.exiting_crouching and !player.crouch_shape_cast.is_colliding():
 		player.exit_crouch()
 	if Input.is_action_just_pressed("crouch") && player.is_on_floor():
