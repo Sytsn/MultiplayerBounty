@@ -16,13 +16,18 @@ var is_crouching = false
 var exiting_crouching = false
 var is_dead = false
 
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	if is_multiplayer_authority():
+		print("✓ I (%s) own this player" % multiplayer.get_unique_id())
+		camera.current = true
+	else:
+		print("✗ Player %s owned by someone else" % get_multiplayer_authority())
 
 func health_setup():
 	health = Health.new(health_res.max_health, health_res.min_health, health_res.heal_rate, health_res.heal_rate)
@@ -99,6 +104,8 @@ func stop_player(delta: float):
 #region Crouching
 
 func enter_crouch_ground():
+	if exiting_crouching:
+		return
 	is_crouching = true
 	collider.scale.y = collider.scale.y / 2
 	neck.position.y -=  .6
