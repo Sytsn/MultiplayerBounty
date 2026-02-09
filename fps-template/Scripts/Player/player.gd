@@ -114,16 +114,14 @@ func enter_crouch_ground():
 
 
 func  enter_crouch_air():
-	if is_multiplayer_authority():
-		collider.scale.y = collider.scale.y / 2
-		neck.position.y -=  .6
+	collider.scale.y = collider.scale.y / 2
+	neck.position.y -=  .6
 
 func exit_crouch():
-	if is_multiplayer_authority():
-		is_crouching = false
-		collider.scale.y = collider.scale.y * 2
-		neck.position.y += .6
-		exiting_crouching = false
+	is_crouching = false
+	collider.scale.y = collider.scale.y * 2
+	neck.position.y += .6
+	exiting_crouching = false
 
 
 #endregion
