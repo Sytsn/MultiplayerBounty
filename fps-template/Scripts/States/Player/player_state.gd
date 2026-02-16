@@ -17,10 +17,11 @@ func _ready() -> void:
 
 
 func update(delta: float) -> void:
-	if Input.is_action_just_pressed("action_1"):
-		player.use_action()
+	if !player.is_multiplayer_authority() && player.is_multiplayer: return
+	
 	crouch_inputs()
 	ui_inputs()
+	action_inputs()
 
 
 func handle_input(event: InputEvent) -> void:
@@ -38,8 +39,6 @@ func handle_input(event: InputEvent) -> void:
 
 
 func crouch_inputs():
-	if !player.is_multiplayer_authority() && player.is_multiplayer: return
-
 	if player.exiting_crouching and !player.crouch_shape_cast.is_colliding():
 		player.exit_crouch()
 	if Input.is_action_just_pressed("crouch") && player.is_on_floor():
@@ -54,7 +53,13 @@ func crouch_inputs():
 func ui_inputs():
 	if Input.is_action_just_released("ui_cancel") and not player.is_paused:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		player.is_paused = true
 	elif Input.is_action_just_released("ui_cancel") and player.is_paused:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		player.is_paused = false
+
+
+func action_inputs():
+	if Input.is_action_just_pressed("action_1"):
+		player.weapon_manager.weapon_action()

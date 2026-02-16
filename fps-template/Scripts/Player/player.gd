@@ -10,7 +10,8 @@ class_name Player extends CharacterBody3D
 @export var crouch_shape_cast: ShapeCast3D
 @export var health_res: HealthRes
 @export var player_aim_ray: RayCast3D
-																																																																
+@export var weapon_manager: WeaponManager
+
 var health: Health
 var is_paused = false
 var is_crouching = false
@@ -27,6 +28,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	if is_multiplayer_authority():
 		camera.current = true
+		weapon_connection_setup()
 	health_setup()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -37,6 +39,11 @@ func health_setup():
 	health = Health.new(health_res.max_health, health_res.min_health, health_res.heal_rate, health_res.heal_rate)
 	health.dead.connect(_on_death)
 	health.damage_taken.connect(_on_damage_taken)
+
+
+func weapon_connection_setup():
+	weapon_manager.connect_player(self)
+
 
 #endregion
 
