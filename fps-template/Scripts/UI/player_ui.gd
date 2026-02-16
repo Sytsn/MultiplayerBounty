@@ -26,7 +26,6 @@ func connect_to_player(player_node):
 		
 
 func _on_set_health(new_health: float):
-	print("Test")
 	health_label.text = str(new_health)
 
 func _on_damage_pressed() -> void:
