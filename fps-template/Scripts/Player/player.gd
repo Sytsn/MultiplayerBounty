@@ -136,7 +136,17 @@ func exit_crouch():
 
 #region Health
 
+@rpc("any_peer", "call_local", "reliable")
+func request_damage(attacker_id: int, damage: int):
+	if not is_multiplayer_authority(): return  # Only authority processes
+	
+	# Server/authority applies damage
+	health._take_damage(damage)
+	print("Took ", damage, " damage from ", attacker_id)
+
+
 func _on_damage_taken(new_health: float):
+	print("curr_health: " + str(health.curr_health))
 	set_health.emit(new_health)
 
 
@@ -146,10 +156,9 @@ func _on_death():
 
 #endregion
 
-
 func use_action():
 	var collider = player_aim_ray.get_collider()
 	if collider is CharacterBody3D:
 		var enemy_player = collider as Player
-		print(enemy_player.name)
-		enemy_player.health._take_damage(25)
+		enemy_player.request_damage.rpc_id(enemy_player.get_multiplayer_authority(), 
+										 multiplayer.get_unique_id(), 25)

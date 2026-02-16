@@ -13,19 +13,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player:
-		speed_label.text = "Speed: " + str(player.velocity.length())
+		if player.is_multiplayer_authority():
+			speed_label.text = "Speed: " + str(player.velocity.length())
+			health_label.text = str(player.health.curr_health)
 
 
 func connect_to_player(player_node):
 	player = player_node
 	if player.is_multiplayer_authority():
 		print(player.name)
-		player.set_health.connect(_on_set_health)
+		#player.set_health.connect(_on_set_health)
 		health_label.text = str(player.health_res.max_health)
-
-
-func _on_set_health(new_health: float):
-	health_label.text = str(new_health)
 
 
 func _on_damage_pressed() -> void:
