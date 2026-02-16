@@ -152,6 +152,7 @@ func _on_damage_taken(new_health: float):
 
 func _on_death():
 	print("Dead")
+	set_health.emit(health.min_health)
 	is_dead = true
 
 #endregion
