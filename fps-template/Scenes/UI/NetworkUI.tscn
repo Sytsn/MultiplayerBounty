@@ -12,18 +12,27 @@ grow_vertical = 2
 script = ExtResource("1_srgu4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=421102294]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 27.0
-offset_right = 91.0
-offset_bottom = 93.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -33.0
+offset_right = 33.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Server" type="Button" parent="VBoxContainer" unique_id=1191063160]
 layout_mode = 2
+size_flags_vertical = 4
 text = "SERVER"
 
 [node name="Client" type="Button" parent="VBoxContainer" unique_id=847623676]
 layout_mode = 2
+size_flags_vertical = 4
 text = "Client"
 
 [connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]

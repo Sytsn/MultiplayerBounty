@@ -12,7 +12,7 @@ var owner_node: Node3D = null
 var is_healing: bool = false
 var heal_speed: float = 0.0
 
-signal damage_taken
+signal damage_taken(new_health: float)
 signal dead
 
 func _init(max_hp: float = 100.0
@@ -38,12 +38,13 @@ func _take_damage(damage: float):
 		_die()
 	if (curr_health - damage) > min_health:
 		curr_health -= damage
-		emit_signal("damage_taken")
+		damage_taken.emit(curr_health)
+		print(curr_health)
 
 
 func _die():
 	curr_health = min_health
-	emit_signal("dead")
+	dead.emit()
 
 
 func _heal(heal: float):

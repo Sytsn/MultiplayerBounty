@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://bmkf77va2rnnq" path="res://Scripts/Player/player.gd" id="1_qk52v"]
 [ext_resource type="Resource" uid="uid://g31nmw7wil4" path="res://Resources/Scenes/player_res.tres" id="2_0u5uq"]
 [ext_resource type="Script" uid="uid://qxxp28vujgu" path="res://Scripts/StateMachine/state_machine.gd" id="2_eiqen"]
+[ext_resource type="Resource" uid="uid://dh5trr05tp3q1" path="res://Resources/Scenes/player_health_res.tres" id="3_74mp2"]
 [ext_resource type="Script" uid="uid://bd1o3e1mpvsf" path="res://Scripts/States/Player/walking.gd" id="3_aep1g"]
 [ext_resource type="Script" uid="uid://d8j3cnaa1equ" path="res://Scripts/States/Player/idle.gd" id="4_kngvf"]
 [ext_resource type="Script" uid="uid://cxa1udd8bx2cy" path="res://Scripts/States/Player/falling.gd" id="5_hfx5k"]
 [ext_resource type="Script" uid="uid://cjnvsygxiw5ii" path="res://Scripts/States/Player/jumping.gd" id="6_duo2v"]
 [ext_resource type="Script" uid="uid://d35yoeaseejme" path="res://Scripts/States/Player/sprinting.gd" id="8_jlvik"]
-[ext_resource type="PackedScene" uid="uid://cx743a7r2n71x" path="res://Scenes/UI/player_ui.tscn" id="9_gk6dx"]
 [ext_resource type="Script" uid="uid://b205udyuifj6g" path="res://Scripts/States/Player/sliding.gd" id="10_jhyir"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pj3iw"]
@@ -27,7 +27,7 @@ properties/1/replication_mode = 1
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gk6dx"]
 height = 1.0
 
-[node name="Player" type="CharacterBody3D" unique_id=1139482985 node_paths=PackedStringArray("neck", "camera", "collider", "mesh", "crouch_shape_cast")]
+[node name="Player" type="CharacterBody3D" unique_id=1139482985 node_paths=PackedStringArray("neck", "camera", "collider", "mesh", "crouch_shape_cast", "player_aim_ray")]
 script = ExtResource("1_qk52v")
 player_res = ExtResource("2_0u5uq")
 neck = NodePath("Neck")
@@ -35,9 +35,8 @@ camera = NodePath("Neck/Camera3D")
 collider = NodePath("CollisionShape3D")
 mesh = NodePath("CollisionShape3D/MeshInstance3D")
 crouch_shape_cast = NodePath("ShapeCast3D")
-
-[node name="PlayerUI" parent="." unique_id=2081950460 node_paths=PackedStringArray("player") instance=ExtResource("9_gk6dx")]
-player = NodePath("..")
+health_res = ExtResource("3_74mp2")
+player_aim_ray = NodePath("Neck/Camera3D/PlayerAim")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=884792193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -77,6 +76,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck" unique_id=58166968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+
+[node name="PlayerAim" type="RayCast3D" parent="Neck/Camera3D" unique_id=1169428513]
+target_position = Vector3(0, 0, -1000)
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1528224476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

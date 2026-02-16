@@ -17,6 +17,8 @@ func _ready() -> void:
 
 
 func update(delta: float) -> void:
+	if Input.is_action_just_pressed("action_1"):
+		player.use_action()
 	crouch_inputs()
 	ui_inputs()
 

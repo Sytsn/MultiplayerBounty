@@ -9,12 +9,15 @@ class_name Player extends CharacterBody3D
 @export var is_multiplayer: bool = true
 @export var crouch_shape_cast: ShapeCast3D
 @export var health_res: HealthRes
-
+@export var player_aim_ray: RayCast3D
+																																																																
 var health: Health
 var is_paused = false
 var is_crouching = false
 var exiting_crouching = false
 var is_dead = false
+
+signal set_health(new_health: float)
 
 
 func _enter_tree() -> void:
@@ -22,16 +25,20 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if is_multiplayer_authority():
-		print("✓ I (%s) own this player" % multiplayer.get_unique_id())
 		camera.current = true
-	else:
-		print("✗ Player %s owned by someone else" % get_multiplayer_authority())
+	health_setup()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+#region Setup
 
 func health_setup():
 	health = Health.new(health_res.max_health, health_res.min_health, health_res.heal_rate, health_res.heal_rate)
 	health.dead.connect(_on_death)
+	health.damage_taken.connect(_on_damage_taken)
+
+#endregion
 
 
 #region Player Movement
@@ -127,5 +134,22 @@ func exit_crouch():
 #endregion
 
 
+#region Health
+
+func _on_damage_taken(new_health: float):
+	set_health.emit(new_health)
+
+
 func _on_death():
+	print("Dead")
 	is_dead = true
+
+#endregion
+
+
+func use_action():
+	var collider = player_aim_ray.get_collider()
+	if collider is CharacterBody3D:
+		var enemy_player = collider as Player
+		print(enemy_player.name)
+		enemy_player.health._take_damage(25)

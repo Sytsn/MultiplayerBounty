@@ -8,9 +8,7 @@ func _ready() -> void:
 
 func spawn_player(id: int) -> void:
 	if !multiplayer.is_server(): return
-	
 	var player: Node = network_player.instantiate()
 	player.name = str(id)
-	player.camera.current = true
-	
 	get_node(spawn_path).call_deferred("add_child", player)
+	#call_deferred("connect_ui_to_player", player)
