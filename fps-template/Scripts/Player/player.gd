@@ -9,7 +9,7 @@ class_name Player extends CharacterBody3D
 @export var is_multiplayer: bool = true
 @export var crouch_shape_cast: ShapeCast3D
 @export var health_res: HealthRes
-@export var player_aim_ray: RayCast3D
+@export var interact_ray: RayCast3D
 @export var weapon_manager: WeaponManager
 
 var health: Health
@@ -17,6 +17,7 @@ var is_paused = false
 var is_crouching = false
 var exiting_crouching = false
 var is_dead = false
+var cur_interactable = null
 
 signal set_health(new_health: float)
 
@@ -31,6 +32,16 @@ func _ready() -> void:
 		weapon_connection_setup()
 	health_setup()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _process(delta: float) -> void:
+	if interact_ray.is_colliding() and cur_interactable == null:
+		var res = interact_ray.get_collider()
+		if res is Node3D:
+			cur_interactable = res.get_parent()
+			print(cur_interactable)
+	elif !interact_ray.is_colliding() and cur_interactable != null:
+		cur_interactable = null
 
 
 #region Setup
@@ -163,10 +174,3 @@ func _on_death():
 	is_dead = true
 
 #endregion
-
-func use_action():
-	var collider = player_aim_ray.get_collider()
-	if collider is CharacterBody3D:
-		var enemy_player = collider as Player
-		enemy_player.request_damage.rpc_id(enemy_player.get_multiplayer_authority(), 
-										 multiplayer.get_unique_id(), 25)

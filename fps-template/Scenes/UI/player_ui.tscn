@@ -44,4 +44,22 @@ offset_bottom = 45.0
 grow_horizontal = 0
 text = "Damage +"
 
+[node name="Interact" type="RichTextLabel" parent="." unique_id=886210753]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.75
+offset_top = -15.0
+offset_right = 80.75
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "Press \"F\" to Interact"
+
 [connection signal="pressed" from="Damage" to="." method="_on_damage_pressed"]

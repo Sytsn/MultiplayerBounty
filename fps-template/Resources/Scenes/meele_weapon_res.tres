@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_u1i5t")
-is_meele = true
+weapon_name = "Melee"
 damage = 10.0
 range = 4.0
 fire_rate = 0.25

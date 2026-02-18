@@ -20,11 +20,11 @@ func setup_weapon():
 
 
 func weapon_action():
-	if weapon_res.is_meele:
-		meele()
+	if weapon_res.is_melee:
+		melee()
 
 
-func meele():
+func melee():
 	var collider = weapon_ray.get_collider()
 	print(collider)
 	if collider is CharacterBody3D:

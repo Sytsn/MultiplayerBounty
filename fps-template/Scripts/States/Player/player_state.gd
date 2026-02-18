@@ -19,6 +19,7 @@ func _ready() -> void:
 func update(delta: float) -> void:
 	if !player.is_multiplayer_authority() && player.is_multiplayer: return
 	
+	interaction_input()
 	crouch_inputs()
 	ui_inputs()
 	action_inputs()
@@ -63,3 +64,12 @@ func ui_inputs():
 func action_inputs():
 	if Input.is_action_just_pressed("action_1"):
 		player.weapon_manager.weapon_action()
+
+
+func interaction_input():
+	if Input.is_action_just_pressed("interact"):
+		if player.cur_interactable != null:
+			player.cur_interactable.interact()
+			player.cur_interactable = null
+		#elif player.cur_area_interactable != null:
+			#player.cur_area_interactable.interact()

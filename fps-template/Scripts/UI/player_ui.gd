@@ -15,6 +15,10 @@ func _process(delta: float) -> void:
 	if player:
 		if player.is_multiplayer_authority():
 			speed_label.text = "Speed: " + str(player.velocity.length())
+		if player.cur_interactable != null:
+			%Interact.visible = true
+		else: 
+			%Interact.visible = false
 
 
 func connect_to_player(player_node):

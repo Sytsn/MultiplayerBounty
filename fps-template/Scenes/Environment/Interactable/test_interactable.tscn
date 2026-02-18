@@ -1,16 +1,25 @@
 [gd_scene format=3 uid="uid://bqjaoqs6rlw2y"]
 
 [ext_resource type="Script" uid="uid://c14lnesgs6xcd" path="res://Scripts/Environment/Interactable/interactable.gd" id="1_blfcr"]
+[ext_resource type="Resource" uid="uid://tpm1r1y53p7a" path="res://Resources/Scenes/test_interact_res.tres" id="2_2k3b2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_blfcr"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_2k3b2"]
+
 [node name="TestInteractable" type="Node3D" unique_id=605355615]
 script = ExtResource("1_blfcr")
+interactable_res = ExtResource("2_2k3b2")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=323501614]
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1989290819]
 shape = SubResource("SphereShape3D_blfcr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1333014238]
+mesh = SubResource("SphereMesh_2k3b2")
 
 [connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area3D" to="." method="_on_area_3d_body_shape_exited"]

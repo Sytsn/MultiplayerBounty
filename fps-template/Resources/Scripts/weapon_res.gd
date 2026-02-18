@@ -1,7 +1,9 @@
 class_name WeaponRes extends Resource
 
+@export var weapon_name: String
+
 @export_category("Weapon Type")
-@export var is_meele: bool
+@export var is_melee: bool
 @export var is_full_auto: bool
 @export var has_alt_fire: bool
 

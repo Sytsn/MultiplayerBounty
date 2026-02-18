@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="InteractableRes" format=3 uid="uid://tpm1r1y53p7a"]
+
+[ext_resource type="Script" uid="uid://biehn36b7ylnh" path="res://Resources/Scripts/interactable_res.gd" id="1_vy2nj"]
+
+[resource]
+script = ExtResource("1_vy2nj")
+collider_radius = 0.5
+metadata/_custom_type_script = "uid://biehn36b7ylnh"

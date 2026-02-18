@@ -5,11 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://n1bmpmajeq05" path="res://Scenes/Player/player.tscn" id="2_mh7mo"]
 [ext_resource type="Script" uid="uid://b6lhrlb5r0xck" path="res://Scripts/Network/high_level_player_spawner.gd" id="3_mh7mo"]
 [ext_resource type="PackedScene" uid="uid://dc88bsb5edwiy" path="res://Scenes/UI/NetworkUI.tscn" id="4_fvyv6"]
-[ext_resource type="Material" uid="uid://qqkk6x16kvo6" path="res://Assets/Materials/player_1.tres" id="5_hipvn"]
-[ext_resource type="Material" uid="uid://bpg3a254218ox" path="res://Assets/Materials/player_2.tres" id="6_vpl1c"]
-[ext_resource type="Material" uid="uid://d3wvw457cao0" path="res://Assets/Materials/player_3.tres" id="7_n21hv"]
+[ext_resource type="PackedScene" uid="uid://bqjaoqs6rlw2y" path="res://Scenes/Environment/Interactable/test_interactable.tscn" id="7_f5sk1"]
 [ext_resource type="PackedScene" uid="uid://cx743a7r2n71x" path="res://Scenes/UI/player_ui.tscn" id="7_w2cw7"]
-[ext_resource type="Material" uid="uid://cco2wwiqbejrj" path="res://Assets/Materials/player_4.tres" id="8_uet2k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -58,7 +55,6 @@ _spawnable_scenes = PackedStringArray("uid://n1bmpmajeq05")
 spawn_path = NodePath("../PlayerContainer")
 script = ExtResource("3_mh7mo")
 network_player = ExtResource("2_mh7mo")
-player_colors = Array[Material]([ExtResource("5_hipvn"), ExtResource("6_vpl1c"), ExtResource("7_n21hv"), ExtResource("8_uet2k")])
 
 [node name="NetworkUi" parent="." unique_id=828660242 instance=ExtResource("4_fvyv6")]
 
@@ -105,3 +101,6 @@ size = Vector3(1, 1, 5)
 
 [node name="PlayerUI" parent="." unique_id=2081950460 instance=ExtResource("7_w2cw7")]
 unique_name_in_owner = true
+
+[node name="TestInteractable" parent="." unique_id=605355615 instance=ExtResource("7_f5sk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.380867, 0.86509204, 0)
