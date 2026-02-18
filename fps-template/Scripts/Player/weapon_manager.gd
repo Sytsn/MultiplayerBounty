@@ -25,6 +25,7 @@ func weapon_action():
 
 
 func melee():
+	print("Melee")
 	var collider = weapon_ray.get_collider()
 	print(collider)
 	if collider is CharacterBody3D:

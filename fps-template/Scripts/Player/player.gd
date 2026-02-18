@@ -20,6 +20,7 @@ var is_dead = false
 var cur_interactable = null
 
 signal set_health(new_health: float)
+signal set_weapon_name
 
 
 func _enter_tree() -> void:
@@ -54,6 +55,7 @@ func health_setup():
 
 func weapon_connection_setup():
 	weapon_manager.connect_player(self)
+	set_weapon_name.emit()
 
 
 #endregion
