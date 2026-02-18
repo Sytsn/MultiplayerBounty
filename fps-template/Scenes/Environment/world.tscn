@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://n1bmpmajeq05" path="res://Scenes/Player/player.tscn" id="2_mh7mo"]
 [ext_resource type="Script" uid="uid://b6lhrlb5r0xck" path="res://Scripts/Network/high_level_player_spawner.gd" id="3_mh7mo"]
 [ext_resource type="PackedScene" uid="uid://dc88bsb5edwiy" path="res://Scenes/UI/NetworkUI.tscn" id="4_fvyv6"]
-[ext_resource type="PackedScene" uid="uid://bqjaoqs6rlw2y" path="res://Scenes/Environment/Interactable/test_interactable.tscn" id="7_f5sk1"]
+[ext_resource type="PackedScene" uid="uid://co30u2fpaf732" path="res://Scenes/Environment/Interactable/melee_interactable.tscn" id="7_5xqn0"]
+[ext_resource type="PackedScene" uid="uid://dy82kep8jylr2" path="res://Scenes/Environment/Interactable/pistol_interactable.tscn" id="7_f5sk1"]
 [ext_resource type="PackedScene" uid="uid://cx743a7r2n71x" path="res://Scenes/UI/player_ui.tscn" id="7_w2cw7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
@@ -102,5 +103,8 @@ size = Vector3(1, 1, 5)
 [node name="PlayerUI" parent="." unique_id=2081950460 instance=ExtResource("7_w2cw7")]
 unique_name_in_owner = true
 
-[node name="TestInteractable" parent="." unique_id=605355615 instance=ExtResource("7_f5sk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.380867, 0.86509204, 0)
+[node name="MeleeInteractable" parent="." unique_id=605355615 instance=ExtResource("7_5xqn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.160227, 0.989213, 0)
+
+[node name="PistolInteractable" parent="." unique_id=802720643 instance=ExtResource("7_f5sk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9832745, 0.989213, 0)

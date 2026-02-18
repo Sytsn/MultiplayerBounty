@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c01ob1paiqhhl"]
 
 [ext_resource type="Script" uid="uid://bq3hmhli3ov7o" path="res://Scripts/Player/weapon_manager.gd" id="1_dic6x"]
-[ext_resource type="Resource" uid="uid://bp5mxiosk71mb" path="res://Resources/Scenes/meele_weapon_res.tres" id="2_2s26l"]
+[ext_resource type="Resource" uid="uid://bp5mxiosk71mb" path="res://Resources/Scenes/Weapons/meele_weapon_res.tres" id="2_2s26l"]
 [ext_resource type="Script" uid="uid://qxxp28vujgu" path="res://Scripts/StateMachine/state_machine.gd" id="2_u2oat"]
 [ext_resource type="Script" uid="uid://vakis4dxtft2" path="res://Scripts/States/Weapon/idle.gd" id="3_2s26l"]
 

@@ -70,7 +70,10 @@ func action_inputs():
 func interaction_input():
 	if Input.is_action_just_pressed("interact"):
 		if player.cur_interactable != null:
-			player.cur_interactable.interact()
+			if !player.cur_interactable.interactable_res.needs_player:
+				player.cur_interactable.interact()
+			else:
+				player.cur_interactable.interact(player)
 			player.cur_interactable = null
 		#elif player.cur_area_interactable != null:
 			#player.cur_area_interactable.interact()

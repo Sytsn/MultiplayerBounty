@@ -38,3 +38,9 @@ func do_damage_to_player(enemy_player: Player):
 		enemy_player.get_multiplayer_authority(), 
 		multiplayer.get_unique_id(),
 		25)
+
+
+func swap_out_weapon(new_weapon_res: WeaponRes):
+	weapon_res = new_weapon_res
+	setup_weapon()
+	player.set_weapon_name.emit()

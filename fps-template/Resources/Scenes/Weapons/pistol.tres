@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponRes" format=3 uid="uid://k45sfd064knu"]
+
+[ext_resource type="Script" uid="uid://bf8yq8al4642w" path="res://Resources/Scripts/weapon_res.gd" id="1_ilvcw"]
+
+[resource]
+script = ExtResource("1_ilvcw")
+weapon_name = "Pistol"
+damage = 24.0
+range = 20.0
+fire_rate = 0.2
+max_reserve_ammo = 24
+max_ammo = 8
+metadata/_custom_type_script = "uid://bf8yq8al4642w"

@@ -1,15 +1,16 @@
-[gd_scene format=3 uid="uid://bqjaoqs6rlw2y"]
+[gd_scene format=3 uid="uid://dy82kep8jylr2"]
 
-[ext_resource type="Script" uid="uid://c14lnesgs6xcd" path="res://Scripts/Environment/Interactable/interactable.gd" id="1_blfcr"]
-[ext_resource type="Resource" uid="uid://tpm1r1y53p7a" path="res://Resources/Scenes/Interactables/test_interact_res.tres" id="2_2k3b2"]
+[ext_resource type="Script" uid="uid://fn5255l3gcb" path="res://Scripts/Environment/Interactable/pistol_interactable.gd" id="1_nnciy"]
+[ext_resource type="Resource" uid="uid://b141tgvajkweo" path="res://Resources/Scenes/Interactables/pistol_interact_res.tres" id="2_xl5ry"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_blfcr"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_2k3b2"]
 
 [node name="PistolInteractable" type="Node3D" unique_id=605355615]
-script = ExtResource("1_blfcr")
-interactable_res = ExtResource("2_2k3b2")
+script = ExtResource("1_nnciy")
+res_path = "res://Resources/Scenes/Weapons/pistol.tres"
+interactable_res = ExtResource("2_xl5ry")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=323501614]
 collision_layer = 16
