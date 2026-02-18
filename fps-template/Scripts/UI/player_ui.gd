@@ -35,7 +35,7 @@ func _on_set_health(new_health: float):
 	health_label.text = str(new_health)
 
 func _on_damage_pressed() -> void:
-	player.health._take_damage(25)
+	player.health._take_damage(-25)
 
 
 func _on_set_weapon_name():

@@ -12,7 +12,6 @@ func _ready() -> void:
 
 func connect_player(player_node: Player):
 	player = player_node
-	print(player)
 
 
 func setup_weapon():
