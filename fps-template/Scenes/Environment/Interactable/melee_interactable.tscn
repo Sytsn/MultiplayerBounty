@@ -22,5 +22,10 @@ shape = SubResource("SphereShape3D_blfcr")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1333014238]
 mesh = SubResource("SphereMesh_2k3b2")
 
+[node name="WeaponName" type="Label3D" parent="." unique_id=256297162]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90228736, 0)
+text = "test"
+
 [connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area3D" to="." method="_on_area_3d_body_shape_exited"]

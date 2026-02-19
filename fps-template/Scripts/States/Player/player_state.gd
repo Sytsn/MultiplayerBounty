@@ -22,7 +22,6 @@ func update(delta: float) -> void:
 	interaction_input()
 	crouch_inputs()
 	ui_inputs()
-	action_inputs()
 
 
 func handle_input(event: InputEvent) -> void:
@@ -59,12 +58,6 @@ func ui_inputs():
 	elif Input.is_action_just_released("ui_cancel") and player.is_paused:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		player.is_paused = false
-
-
-func action_inputs():
-	if Input.is_action_just_pressed("action_1"):
-		print("test")
-		player.weapon_manager.weapon_action()
 
 
 func interaction_input():

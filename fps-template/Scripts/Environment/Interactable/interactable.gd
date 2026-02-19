@@ -8,6 +8,10 @@ var collision_shape: CollisionShape3D
 func _ready() -> void:
 	collision_shape = find_child("CollisionShape3D")
 	collision_shape.shape.radius = interactable_res.collider_radius
+	interact_ready()
+
+func interact_ready():
+	pass
 
 
 func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:

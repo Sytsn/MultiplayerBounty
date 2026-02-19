@@ -162,16 +162,13 @@ func request_damage(attacker_id: int, damage: int):
 	
 	# Server/authority applies damage
 	health._take_damage(damage)
-	print("Took ", damage, " damage from ", attacker_id)
 
 
 func _on_damage_taken(new_health: float):
-	print("curr_health: " + str(health.curr_health))
 	set_health.emit(new_health)
 
 
 func _on_death():
-	print("Dead")
 	set_health.emit(health.min_health)
 	is_dead = true
 

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://co30u2fpaf732" path="res://Scenes/Environment/Interactable/melee_interactable.tscn" id="7_5xqn0"]
 [ext_resource type="PackedScene" uid="uid://dy82kep8jylr2" path="res://Scenes/Environment/Interactable/pistol_interactable.tscn" id="7_f5sk1"]
 [ext_resource type="PackedScene" uid="uid://cx743a7r2n71x" path="res://Scenes/UI/player_ui.tscn" id="7_w2cw7"]
+[ext_resource type="PackedScene" uid="uid://bqq0an8pauh58" path="res://Scenes/Environment/Interactable/full_auto_interactable.tscn" id="9_5xqn0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -104,7 +105,10 @@ size = Vector3(1, 1, 5)
 unique_name_in_owner = true
 
 [node name="MeleeInteractable" parent="." unique_id=605355615 instance=ExtResource("7_5xqn0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.160227, 0.989213, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.435925, 1.2744194, 5.074144)
 
-[node name="PistolInteractable" parent="." unique_id=802720643 instance=ExtResource("7_f5sk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9832745, 0.989213, 0)
+[node name="PistolInteractable" parent="." unique_id=356230117 instance=ExtResource("7_f5sk1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.435925, 1.2744194, 1.97212)
+
+[node name="FullAutoInteractable" parent="." unique_id=1007352318 instance=ExtResource("9_5xqn0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.435925, 1.2744194, -0.6288252)
