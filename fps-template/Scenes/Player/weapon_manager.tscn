@@ -5,10 +5,11 @@
 [ext_resource type="Script" uid="uid://qxxp28vujgu" path="res://Scripts/StateMachine/state_machine.gd" id="2_u2oat"]
 [ext_resource type="Script" uid="uid://vakis4dxtft2" path="res://Scripts/States/Weapon/idle.gd" id="3_2s26l"]
 
-[node name="WeaponManager" type="Node3D" unique_id=1286958696 node_paths=PackedStringArray("weapon_ray")]
+[node name="WeaponManager" type="Node3D" unique_id=1286958696 node_paths=PackedStringArray("weapon_ray", "fire_rate_timer")]
 script = ExtResource("1_dic6x")
 weapon_res = ExtResource("2_2s26l")
 weapon_ray = NodePath("WeaponRay")
+fire_rate_timer = NodePath("FullAutoTimer")
 
 [node name="StateMachine" type="Node" parent="." unique_id=974949537]
 script = ExtResource("2_u2oat")
@@ -18,3 +19,5 @@ script = ExtResource("3_2s26l")
 
 [node name="WeaponRay" type="RayCast3D" parent="." unique_id=1782195610]
 target_position = Vector3(0, 0, 0)
+
+[node name="FullAutoTimer" type="Timer" parent="." unique_id=2110965395]

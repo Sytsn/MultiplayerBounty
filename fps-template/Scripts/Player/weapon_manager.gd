@@ -3,6 +3,8 @@ class_name WeaponManager extends Node3D
 
 @export var weapon_res: WeaponRes
 @export var weapon_ray: RayCast3D
+@export var fire_rate_timer: Timer
+
 var is_shooting: bool
 var player: Player
 
@@ -35,6 +37,7 @@ func melee():
 
 
 func shoot():
+	start_fire_rate_timer()
 	var collider = weapon_ray.get_collider()
 	print(collider)
 	if collider is CharacterBody3D:
@@ -53,3 +56,8 @@ func swap_out_weapon(new_weapon_res: WeaponRes):
 	weapon_res = new_weapon_res
 	setup_weapon()
 	player.set_weapon_name.emit()
+
+
+func start_fire_rate_timer():
+	fire_rate_timer.one_shot = true
+	fire_rate_timer.start(weapon_res.fire_rate)

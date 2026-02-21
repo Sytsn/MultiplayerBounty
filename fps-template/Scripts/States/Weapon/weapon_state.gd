@@ -19,6 +19,7 @@ func action_inputs():
 	if Input.is_action_just_pressed("action_1") or weapon_manager.is_shooting:
 		if weapon_manager.weapon_res.is_full_auto and !weapon_manager.is_shooting:
 			weapon_manager.is_shooting = true
-		weapon_manager.weapon_action()
+		if weapon_manager.fire_rate_timer.time_left == 0:
+			weapon_manager.weapon_action()
 	if Input.is_action_just_released("action_1") and weapon_manager.weapon_res.is_full_auto:
 		weapon_manager.is_shooting = false
